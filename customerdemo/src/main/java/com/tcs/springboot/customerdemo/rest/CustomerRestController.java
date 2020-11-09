@@ -35,5 +35,18 @@ public class CustomerRestController {
 		return customerService.findAll();
 	}
 
-	
+	@GetMapping("/customers/{customerId}")
+	public Customer getCustomer(@PathVariable int customerId) {
+
+		Customer theCustomer = customerService.findById(customerId);
+
+		if (theCustomer == null) {
+			throw new RuntimeException("Customer id not found - " + customerId);
+		}
+
+		return theCustomer;
+	}
+
+
+
 }
