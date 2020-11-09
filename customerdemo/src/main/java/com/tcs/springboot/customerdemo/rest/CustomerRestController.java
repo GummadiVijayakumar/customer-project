@@ -47,6 +47,14 @@ public class CustomerRestController {
 		return theCustomer;
 	}
 
+	@PostMapping("/customers")
+	public Customer addCustomer(@RequestBody Customer theCustomer) {
 
+		theCustomer.setId(0);
+
+		customerService.save(theCustomer);
+
+		return theCustomer;
+	}
 
 }
