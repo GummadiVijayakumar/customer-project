@@ -31,7 +31,7 @@ public class CustomerRestController {
 	
 
 	@GetMapping("/customers")
-	public List<Customer> findAll() {
+	public List<Customer> getAllCustomers() {
 		return customerService.findAll();
 	}
 
@@ -50,7 +50,7 @@ public class CustomerRestController {
 	@PostMapping("/customers")
 	public Customer addCustomer(@RequestBody Customer theCustomer) {
 
-		theCustomer.setId(0);
+		/*theCustomer.setId(0);*/
 
 		customerService.save(theCustomer);
 
@@ -59,6 +59,15 @@ public class CustomerRestController {
 
 	@PutMapping("/customers")
 	public Customer updateCustomer(@RequestBody Customer theCustomer) {
+		
+		Customer tempCustomer = customerService.findById(theCustomer.getId());
+
+
+
+		if (tempCustomer == null) {
+			throw new RuntimeException("Customer id not found - " + theCustomer.getId());
+		}
+
 
 		customerService.save(theCustomer);
 

@@ -7,13 +7,13 @@ import com.tcs.springboot.customerdemo.entity.Customer;
 
 public interface CustomerService {
 	
-	public List<Customer> findAll();
+	 List<Customer> findAll();
 
-	public Customer findById(int theId);
+	 Customer findById(int theId);
 	
-	public void save(Customer theEmployee);
+	 void save(Customer theEmployee);
 	
-	public void deleteById(int theId);
+	 void deleteById(int theId);
 	
 
 }
